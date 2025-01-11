@@ -1,0 +1,121 @@
+@import '../../global.css';
+
+/* Screener Page Layout */
+.screener-page {
+    background-color: #f9f9f9; /* Light gray background for pages */
+    min-height: 100vh;
+    padding: 24px; /* Default spacing */
+}
+
+/* Market Cards */
+.market-cards {
+    margin-top: 24px;
+    padding: 16px 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+}
+
+.market-card {
+    background-color: #ffffff; /* White background */
+    border-radius: 12px; /* Rounded corners */
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Light shadow */
+    padding: 16px;
+    width: 400px;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.market-card:hover {
+    transform: translateY(-8px); /* Slight lift on hover */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15); /* Slightly darker shadow */
+}
+
+/* Market Title and Values */
+.market-title {
+    font-size: 0.85rem;
+    color: #6c757d; /* Muted gray */
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+.market-value {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #333333; /* Dark text */
+}
+
+.market-change {
+    font-size: 0.85rem;
+    font-weight: 500;
+    margin-top: 8px;
+}
+
+.market-change.positive {
+    color: #28a745; /* Green for positive changes */
+}
+
+.market-change.negative {
+    color: #dc3545; /* Red for negative changes */
+}
+
+/* Screener Header */
+.screener-header {
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    padding: 8px;
+}
+
+.screener-header input {
+    border-radius: 8px;
+    font-size: 1rem; /* Base font size */
+    color: #444444; /* Default text color */
+    border: 1px solid #dcdfe6; /* Light border */
+}
+
+/* Screener Tabs */
+.screener-tabs {
+    margin-top: 24px;
+
+    padding: 16px;
+}
+
+
+/* Removed custom styles for Ant Design Tabs */
+.ant-tabs-tab {
+    font-size: 1rem !important; /* Increase font size */
+    font-weight: 600; /* Make the font bold */
+}
+
+
+/* Table Header */
+.ant-table-thead > tr > th {
+    font-size: 1rem !important;
+}
+
+/* Table Rows */
+.ant-table-tbody > tr > td {
+    font-size: 1rem !important; /* Increase font size */
+
+}
+
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .market-card {
+        width: 160px;
+        padding: 12px;
+    }
+
+    .market-value {
+        font-size: 1rem;
+    }
+
+    .market-cards {
+        gap: 8px;
+    }
+}

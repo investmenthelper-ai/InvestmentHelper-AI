@@ -1,0 +1,69 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%; /* Full width */
+  height: 60px; /* Fixed height */
+  padding: 0 16px;
+  background-color: #ffffff; /* White navbar background */
+  z-index: 15;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  font-family: "Poppins", sans-serif; /* Ensure consistent font *//* Stronger shadow for contrast */
+}
+
+.navbar-logo {
+  font-size: 1.8rem; /* Slightly larger logo font */
+  font-weight: 700; /* Make the logo bold */
+  color: #0078d4; /* Primary blue color */
+  letter-spacing: 0.5px;
+}
+
+.navbar-menu {
+  flex-grow: 1; /* Allow menu to occupy available space */
+  display: flex; /* Ensure menu items are aligned horizontally */
+  justify-content: flex-end; /* Align items to the right */
+  gap: 16px; /* Add spacing between menu items */
+  padding-right: clamp(8px, 2%, 24px); /* Prevent items from being hidden */
+}
+
+.ant-menu-horizontal {
+  background: transparent; /* Remove default menu background */
+  border-bottom: none; /* Remove default underline */
+}
+
+.ant-menu-item {
+  padding: 8px 16px; /* Consistent padding for clickable area */
+  color: #444444; /* Dark gray color for default state */
+  font-size: 1rem; /* Base font size */
+  font-weight: 500; /* Semi-bold for visibility */
+  font-family: "Poppins", sans-serif;
+  transition: color 0.3s ease, background-color 0.3s ease; /* Smooth hover transition */
+}
+
+.ant-menu-item:hover {
+  color: #0078d4; /* Primary blue color on hover */
+  background-color: rgba(0, 120, 212, 0.1); /* Light blue hover background */
+  border-radius: 4px; /* Rounded edges for hover effect */
+}
+.ant-menu-item-selected {
+  color: #005bb5; /* Slightly darker blue for selected item */
+  font-weight: 700; /* Make selected item bold */
+}
+@media (max-width: 768px) {
+  .navbar {
+    padding: 0 16px;
+    height: 50px; /* Slightly reduced height for smaller screens */
+  }
+
+  .navbar-logo {
+    font-size: 1.5rem; /* Adjust logo size */
+  }
+
+  .ant-menu-item {
+    font-size: 0.9rem; /* Slightly smaller font size */
+    padding: 6px 12px; /* Adjust padding for smaller screens */
+  }
+}

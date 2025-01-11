@@ -1,0 +1,16 @@
+.trading-view-page {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh; /* Full viewport height */
+
+}
+
+.main-container {
+  display: flex;
+  height: calc(100% - 60px); /* Adjust height to account for navbar */
+  width: 100%;
+  position: relative;
+  /* Prevent content overflow */
+}
+

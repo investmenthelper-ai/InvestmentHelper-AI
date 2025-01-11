@@ -1,0 +1,25 @@
+.sidebar-wrapper {
+  position: fixed; /* Sidebar stays fixed on top of the chart */
+  top: 60px; /* Start below the navbar */
+  left: 0;
+  height: calc(100vh - 60px); /* Full height minus navbar */
+  width: 200px; /* Fixed width */
+  z-index: 10; /* Place above the chart */
+}
+
+
+.sidebar {
+  background-color: white;
+  color: white;
+  height: 100%; /* Make sidebar fill its wrapper */
+  overflow: hidden;
+  transition: width 0.3s ease-in-out;
+}
+
+.sidebar.closed {
+  width: 80px; /* Sidebar width when closed */
+}
+
+.sidebar.open {
+  width: 200px; /* Sidebar width when open */
+}

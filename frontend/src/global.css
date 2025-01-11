@@ -1,0 +1,41 @@
+:root {
+  /* Colors */
+  --color-background: #f9f9f9; /* Light gray background for pages */
+  --color-white: #ffffff;
+  --color-light-gray: #f5f5f5;
+  --color-dark-gray: #444444;
+  --color-black: #333333;
+  --color-primary: #0078d4;
+  --color-secondary: #6c757d;
+  --color-hover-gray: #f9f9f9;
+  --color-success: #28a745;
+  --color-error: #dc3545;
+  --color-border: #dcdfe6;
+  --color-shadow: rgba(0, 0, 0, 0.1);
+
+  /* Shadows */
+  --box-shadow-light: 0 2px 8px var(--color-shadow);
+  --box-shadow-medium: 0 4px 12px rgba(0, 0, 0, 0.1);
+  --box-shadow-hover: 0 8px 16px rgba(0, 0, 0, 0.15);
+
+  /* Fonts */
+  --font-family: "Poppins", sans-serif;
+  --font-size-small: 0.85rem;
+  --font-size-base: 1rem;
+  --font-size-medium: 1rem;
+  --font-size-large: 1.5rem;
+  --font-size-heading: 1.8rem;
+
+  /* Spacing */
+  --spacing-small: 8px;
+  --spacing-medium: 16px;
+  --spacing-large: 24px;
+
+  /* Border */
+  --border-radius: 12px;
+}
+
+body,html {
+
+  overflow: hidden;
+}
