@@ -7,15 +7,15 @@ import "./Navbar.css";
 const items = [
   {
     key: "1",
-    icon: <BarChartOutlined />,
-    label: "Markets",
-    path: "/screener", // Add path for navigation
+    icon: <SettingOutlined />,
+    label: "News",
+    path: "/news", // Placeholder path
   },
   {
     key: "2",
-    icon: <MessageOutlined />,
-    label: "Chatbot",
-    path: "/chatbot", // Placeholder path
+    icon: <BarChartOutlined />,
+    label: "Markets",
+    path: "/screener", // Add path for navigation
   },
   {
     key: "3",
@@ -23,6 +23,7 @@ const items = [
     label: "Settings",
     path: "/settings", // Placeholder path
   },
+
 ];
 
 const Navbar: React.FC = () => {

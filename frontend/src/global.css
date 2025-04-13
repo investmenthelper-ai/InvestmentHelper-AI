@@ -35,7 +35,10 @@
   --border-radius: 12px;
 }
 
-body,html {
-
-  overflow: hidden;
+html, body {
+  margin: 0;
+  padding: 0;
+  height: 100%; /* Ensure body takes full viewport height */
+  overflow: hidden; /* Prevent scrollbars caused by body overflow */
+  box-sizing: border-box; /* Ensure consistent box sizing */
 }

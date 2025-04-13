@@ -52,18 +52,3 @@
   color: #005bb5; /* Slightly darker blue for selected item */
   font-weight: 700; /* Make selected item bold */
 }
-@media (max-width: 768px) {
-  .navbar {
-    padding: 0 16px;
-    height: 50px; /* Slightly reduced height for smaller screens */
-  }
-
-  .navbar-logo {
-    font-size: 1.5rem; /* Adjust logo size */
-  }
-
-  .ant-menu-item {
-    font-size: 0.9rem; /* Slightly smaller font size */
-    padding: 6px 12px; /* Adjust padding for smaller screens */
-  }
-}

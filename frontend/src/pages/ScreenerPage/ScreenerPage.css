@@ -5,6 +5,7 @@
     background-color: #f9f9f9; /* Light gray background for pages */
     min-height: 100vh;
     padding: 24px; /* Default spacing */
+
 }
 
 /* Market Cards */
@@ -104,18 +105,4 @@
 }
 
 
-/* Responsive Design */
-@media (max-width: 768px) {
-    .market-card {
-        width: 160px;
-        padding: 12px;
-    }
 
-    .market-value {
-        font-size: 1rem;
-    }
-
-    .market-cards {
-        gap: 8px;
-    }
-}

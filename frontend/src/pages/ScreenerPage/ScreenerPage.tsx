@@ -1,11 +1,15 @@
-import React, { useState } from "react";
-import { Table, Tabs, Input, Tag, Tooltip, Card, Row, Col } from "antd";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import { Table, Tabs, Input, Spin, Card, Row, Col } from "antd";
 import {LineChart, Line, ResponsiveContainer, YAxis} from "recharts";
 import { StarOutlined, StarFilled, SearchOutlined, RiseOutlined, FallOutlined } from "@ant-design/icons";
 import Navbar from "../../Components/Navbar/Navbar";
 import type { ColumnsType } from "antd/es/table";
 import { useNavigate } from "react-router-dom";
 import "./ScreenerPage.css";
+
+
+
 
 const { TabPane } = Tabs;
 
@@ -31,29 +35,6 @@ const marketData = [
     },
 ];
 
-// Sample table data
-const stockData = [
-    {
-        key: "1",
-        company: "TURKCELL İLETİŞİM HİZMETLERİ",
-        ticker: "TCELL",
-        price: 207.23,
-        day: 0.36,
-        month: -1.48,
-        year: 16.06,
-        marketCap: "$3.22 T",
-    },
-    {
-        key: "2",
-        company: "KOÇ HOLDİNG A.Ş.",
-        ticker: "KCHOL",
-        price: 417.14,
-        day: 0.18,
-        month: -1.11,
-        year: 9.42,
-        marketCap: "$3.00 T",
-    },
-];
 
 // Table columns
 const columns: ColumnsType<any> = [
@@ -99,9 +80,14 @@ const columns: ColumnsType<any> = [
     { title: "M Cap", dataIndex: "marketCap" },
 ];
 
+
+
+
 const ScreenerPage: React.FC = () => {
+    const [stockData, setStockData] = useState([]);
+    const [filteredData, setFilteredData] = useState([]);
+    const [loading, setLoading] = useState(true);
     const navigate = useNavigate();
-    const [filteredData, setFilteredData] = useState(stockData);
     const handleRowClick = (record: any) => {
         navigate(`/tradingView/${record.ticker}`); // Redirect to TradingViewPage with ticker
     };
@@ -111,6 +97,30 @@ const ScreenerPage: React.FC = () => {
         );
         setFilteredData(filtered);
     };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                setLoading(true); // start loading
+                const res = await axios.get("http://localhost:5000/api/stocks/");
+                const withKeys = res.data.map((item, index) => ({
+                    ...item,
+                    key: index + 1,
+                    day: item.dayChange,
+                    month: item.monthChange * 100,
+                    year: item.yearChange * 100,
+                }));
+                setStockData(withKeys);
+                setFilteredData(withKeys);
+            } catch (error) {
+                console.error("Failed to fetch stock data", error);
+            } finally {
+                setLoading(false); // end loading
+            }
+        };
+
+        fetchData();
+    }, []);
 
     return (
         <div className="screener-page">
@@ -156,24 +166,26 @@ const ScreenerPage: React.FC = () => {
             <div className="screener-tabs">
                 <Tabs defaultActiveKey="1">
                     <TabPane tab="Companies" key="1">
-                        <div className="screener-header">
-                            <Input
-                                placeholder="Search..."
-                                prefix={<SearchOutlined/>}
-                                onChange={(e) => onSearch(e.target.value)}
-                                style={{ width: "300px" }}
+                        <Spin spinning={loading}>
+                            <div className="screener-header">
+                                <Input
+                                    placeholder="Search..."
+                                    prefix={<SearchOutlined />}
+                                    onChange={(e) => onSearch(e.target.value)}
+                                    style={{ width: "300px", marginBottom: "1rem" }}
+                                />
+                            </div>
+                            <Table
+                                columns={columns}
+                                dataSource={filteredData}
+                                pagination={false}
+                                rowKey="key"
+                                onRow={(record) => ({
+                                    onClick: () => handleRowClick(record),
+                                    style: { cursor: "pointer" },
+                                })}
                             />
-                        </div>
-                        <Table
-                            columns={columns}
-                            dataSource={filteredData}
-                            pagination={false}
-                            rowKey="key"
-                            onRow={(record) => ({
-                                onClick: () => handleRowClick(record), // Handle row click
-                                style: { cursor: "pointer" }, // Add cursor pointer
-                            })}
-                        />
+                        </Spin>
                     </TabPane>
                     <TabPane tab="Sectors" key="2">
                         <p>Sector data...</p>
